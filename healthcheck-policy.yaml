@@ -1,0 +1,16 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: gke-gateway-api-example-healthcheck
+  namespace: gateway-api-test
+spec:
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 1323
+        requestPath: /health
+  targetRef:
+    group: ""
+    kind: Service
+    name: gke-gateway-api-example
