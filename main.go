@@ -8,6 +8,7 @@ import (
 
 func main() {
 	e := echo.New()
+	e.Logger.SetLevel(1)
 	e.GET("/", func(c echo.Context) error {
 		e.Logger.Error("Unauthorized")
 		return c.String(http.StatusUnauthorized, "Unauthorized")
