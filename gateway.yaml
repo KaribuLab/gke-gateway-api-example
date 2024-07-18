@@ -4,7 +4,7 @@ metadata:
   name: gke-gateway-api-example-gateway
   namespace: gateway-api-test
 spec:
-  gatewayClassName: gke-l7-regional-external-managed
+  gatewayClassName: gke-l7-global-external-managed
   listeners:
   - name: http
     protocol: HTTP
