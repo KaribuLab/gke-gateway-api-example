@@ -22,3 +22,14 @@ This return always 401 HTTP status code to simulate a private resource. To get a
 ```shell
 curl http://localhost:1323/health
 ```
+
+## Deployment in GKE
+
+```shell
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+# Before to run this command, create a global IP in your Google Cloud project named "gateway-api-ip-test"
+kubectl apply -f gateway.yaml
+kubectl apply -f http-route.yaml
+kubectl apply -f healthcheck-policy.yaml
+```
