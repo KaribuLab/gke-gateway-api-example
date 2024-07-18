@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: gateway-api-test
+  name: gke-gateway-api-example
+  labels:
+    app: gke-gateway-api-example
+spec:
+  selector:
+    matchLabels:
+      app: gke-gateway-api-example
+  template:
+    metadata:
+      labels:
+        app: gke-gateway-api-example
+    spec:
+      containers:
+        - image: karibu/gke-gateway-api-example:v0.1.1
+          imagePullPolicy: Always
+          name: single
+          ports:
+            - containerPort: 1323
+          startupProbe:
+            httpGet:
+              port: 1323
+              path: /health
+          livenessProbe:
+            httpGet:
+              port: 1323
+              path: /health
+          readinessProbe:
+            httpGet:
+              port: 1323
+              path: /health
+status: {}
